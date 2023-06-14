@@ -75,9 +75,11 @@ class Blockchain:
         return (block_hash.startswith('0' * Blockchain.difficulty) and
                 block_hash == block.computeHash())
 
-    def addNewTransaction(self, transaction : Transaction):
+    def addNewTransaction(self, transaction : Transaction) -> bool:
         if transaction.proper:
             self.unconfirmed_transactions.append(transaction)
+            return True
+        return False
      
     def mine(self):
         if not self.unconfirmed_transactions:
@@ -96,39 +98,39 @@ class Blockchain:
         return new_block.index
 
         
-blockchain = Blockchain()
+# blockchain = Blockchain()
 
-Dinesh = Client('dinesh')
-Ramesh = Client('ramesh')
-Seema = Client('seema')
-Vijay = Client('vijay')
+# Dinesh = Client('dinesh')
+# Ramesh = Client('ramesh')
+# Seema = Client('seema')
+# Vijay = Client('vijay')
 
-Dinesh.payIn(20)
+# Dinesh.payIn(20)
 
-t1 = Transaction(
-    Dinesh,
-    Ramesh,
-    15.0
-)
-t1.sign_transaction()
-t2 = Transaction(
-    Dinesh,
-    Seema,
-    6.0
-)
-t2.sign_transaction()
-t3 = Transaction(
-    Ramesh,
-    Vijay,
-    2.0
-)
-t3.sign_transaction()
+# t1 = Transaction(
+#     Dinesh,
+#     Ramesh,
+#     15.0
+# )
+# t1.sign_transaction()
+# t2 = Transaction(
+#     Dinesh,
+#     Seema,
+#     6.0
+# )
+# t2.sign_transaction()
+# t3 = Transaction(
+#     Ramesh,
+#     Vijay,
+#     2.0
+# )
+# t3.sign_transaction()
 
-blockchain.addNewTransaction(t1)
+# blockchain.addNewTransaction(t1)
 
-new_block_index = blockchain.mine()
-blockchain.addNewTransaction(t2)
-new_block_index = blockchain.mine()
-blockchain.addNewTransaction(t3)
-new_block_index = blockchain.mine()
-print(new_block_index)
+# new_block_index = blockchain.mine()
+# blockchain.addNewTransaction(t2)
+# new_block_index = blockchain.mine()
+# blockchain.addNewTransaction(t3)
+# new_block_index = blockchain.mine()
+# print(new_block_index)
