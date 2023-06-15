@@ -1,6 +1,5 @@
 from block import Block
 import time
-import json
 from hashlib import sha256
 from transaction import Transaction
 from client import Client
